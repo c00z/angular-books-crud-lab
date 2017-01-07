@@ -6,19 +6,12 @@
 
       <div class="col-md-3 col-xs-12 thumbnail">
         <img class="img-responsive col-m-4" ng-src={{booksShowCtrl.book.image}} alt="Book image">
+        <input ng-show="editing" ng-model="booksShowCtrl.book.image" type="text" class="form-control input-md">
       </div>
 
       <div class="col-md-9 col-xs-12">
           <ul class="list-group form-inline">
             <li class="list-group-item">
-
-
-              <!-- <h5 class="inline-header">Author:s</h5>
-              <span>{{booksShowCtrl.book.author}}</span>
-
-              <h5 class="inline-header">Release:</h5>
-              <span>{{booksShowCtrl.book.releaseDate}}</span> -->
-
 
 
               <h5 class="inline-header">Title:</h5>
@@ -35,12 +28,18 @@
 
             </li>
           </ul>
-          <button class='btn btn-danger' ng-hide="editing" ng-click="booksShowCtrl.deleteBook(book)">Delete&nbsp;<span class="glyphicon glyphicon-trash"></span></button>
 
+          <!-- show while not editing -->
+          <button class='btn btn-danger' ng-hide="editing" ng-click="booksShowCtrl.deleteBook(book)">Delete&nbsp;<span class="glyphicon glyphicon-trash"></span></button>
           <button  class='btn btn-info' ng-hide="editing" ng-click="editing = true">Edit Album&nbsp;<span class="glyphicon glyphicon-pencil"></span></button>
 
+          <!-- show while editing -->
           <button class='btn btn-success' ng-show="editing" ng-click="booksShowCtrl.editingBook(booksShowCtrl.book); editing = false">Save&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
           <button class='btn btn-danger' ng-show="editing" ng-click="editing = false">Cancel&nbsp;<span class="glyphicon glyphicon-remove"></span></button>
+
+          <!-- <button class='btn btn-primary' ng-href="/books/">Return Home&nbsp;<span class="glyphicon glyphicon-remove"></span></button> -->
+
+
 
   </div>
 
