@@ -46,7 +46,8 @@
                 <!-- <div class="form-group"> -->
                   <!-- <label class="col-md-4 control-label">Save</label> -->
                   <div class="col-md-4 col-md-offset-4">
-                    <button class="btn btn-primary">Submit</button>
+                    <button class="btn btn-warning">Submit</button>
+
                   </div>
                 <!-- </div> -->
               </fieldset>
@@ -62,16 +63,17 @@
 
 
 <input type="text" class="form-control" ng-model="searchText" placeholder="Search Books">
-<div ng-repeat="book in booksIndexCtrl.books | orderBy: 'name' | filter: searchText" class="row">
+<div ng-repeat="book in booksIndexCtrl.books | orderBy: 'title' | filter: searchText" class="row">
 
 
+<hr>
 <!-- Book display information -->
   <!-- <div class="row"> -->
 
     <div class="col-md-3 col-xs-12 thumbnail">
       <img class="img-responsive col-m-4" ng-src={{book.image}} alt="Book image">
     </div>
-    <br>
+
     <div class="col-md-9 col-xs-12">
         <ul class="list-group form-inline">
           <li class="list-group-item">

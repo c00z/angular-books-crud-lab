@@ -44,7 +44,7 @@ function BooksShowController($http, $routeParams, $location) {
   }).then(function successCallback(editBook) {
     console.log("EDIT IS WERKIN",editBook);
     vm.book = editBook.data;
-    // $location.path('/');
+    $location.path('/');
   }, function errorCallback(response) {
     console.log('There was an error updating the data', response);
   });
