@@ -1,34 +1,39 @@
+
 <h2>{{booksShowCtrl.book.title}}</h2>
+
 <hr>
-<div ng-repeat="book in booksShowCtrl.books">
     <div class="row">
 
       <div class="col-md-3 col-xs-12 thumbnail">
-        <img src="{{book.image}}" alt="book image">
+        <img class="img-responsive col-m-4" ng-src={{booksShowCtrl.book.image}} alt="Book image">
       </div>
 
       <div class="col-md-9 col-xs-12">
           <ul class="list-group form-inline">
             <li class="list-group-item">
+
               <h5 class="inline-header">Title:</h5>
-              <span>{{book.title}}</span>
+              <span ng-hide="editing">{{booksShowCtrl.book.title}}</span>
+              <input ng-show="editing" ng-model="booksShowCtrl.book.title" type="text" class="form-control input-md">
+
               <h5 class="inline-header">Author:</h5>
-              <span>{{book.author}}</span>
+              <span ng-hide="editing">{{booksShowCtrl.book.author}}</span>
+              <input ng-show="editing" ng-model="booksShowCtrl.book.author" type="text" class="form-control input-md">
+
               <h5 class="inline-header">Release:</h5>
-              <span>{{book.releaseDate}}</span>
+              <span ng-hide="editing">{{booksShowCtrl.book.releaseDate}}</span>
+              <input ng-show="editing" ng-model="booksShowCtrl.book.releaseDate" type="text" class="form-control input-md">
+
             </li>
           </ul>
+          <button class='btn btn-danger' ng-click="booksShowCtrl.deleteBook(book)">Delete Album</button>
+
+          <button class='btn btn-info' ng-hide="editing" ng-click="editing = true">Edit Album</button>
+          <button class='btn btn-success' ng-show="editing" ng-click="booksShowCtrl.editingBook(book); editing = false">Save Changes</button>
+
   </div>
 
 
 
 </div>
-
-
-
-<!-- Here, add the display of the book info,
-     the buttons for editing or deleting,
-     the form and buttons that will show if you
-     click edit. Don't forget that all of those
-     buttons and forms will need some angular
-     functionality! -->
+</div>
