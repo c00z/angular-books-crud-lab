@@ -1,6 +1,7 @@
 angular.module('libraryApp')
   .controller('BooksShowController', BooksShowController);
 
+
 // controller function and dependency injection
 // $routeParams and $location are required for routing stuff
 //   - but you might need to add a dependency
@@ -14,10 +15,10 @@ function BooksShowController($http, $routeParams, $location) {
     method: 'GET',
     url: 'https://super-crud.herokuapp.com/books/'+ bookId
   }).then(function successCallback(response) {
-    console.log("Hitting Get Success on BooksShowController", response.data);
+    // console.log("Hitting Get Success on BooksShowController", response.data);
     vm.book = response.data;
   }, function errorCallback(response) {
-    console.log('There was an error getting the data', response);
+    // console.log('There was an error getting the data', response);
 
   });
 
@@ -33,4 +34,20 @@ function BooksShowController($http, $routeParams, $location) {
       console.log("ERROR!", response);
     }
   }
+
+  vm.editingBook = function (book) {
+    var bookId = $routeParams.id;
+    $http({
+    method: 'PUT',
+    url:'https://super-crud.herokuapp.com/books/'+ bookId,
+    data: book
+  }).then(function successCallback(editBook) {
+    console.log("EDIT IS WERKIN",editBook);
+    vm.book = editBook.data;
+    // $location.path('/');
+  }, function errorCallback(response) {
+    console.log('There was an error updating the data', response);
+  });
+  }
+
 }
