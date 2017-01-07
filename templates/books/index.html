@@ -1,12 +1,77 @@
-<h2>Library Books</h2>
-<div ng-repeat="book in booksIndexCtrl.books">
+<h1>Library Books</h1>
 
   <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+
+            <form class="form-horizontal" ng-submit="booksIndexCtrl.createBook()">
+              <fieldset>
+
+                <!-- Form Name -->
+                <legend>Add New Book</legend>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Title</label>
+                  <div class="col-md-4">
+                  <input ng-model="booksIndexCtrl.newBook.title" type="text" class="form-control input-md">
+                  </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Author</label>
+                  <div class="col-md-4">
+                  <input ng-model="booksIndexCtrl.newBook.author" type="text" class="form-control input-md">
+                  </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Release Date</label>
+                  <div class="col-md-4">
+                  <input ng-model="booksIndexCtrl.newBook.releaseDate" type="text" class="form-control input-md">
+                  </div>
+                </div>
+
+                <!-- Textarea -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Image URL</label>
+                  <div class="col-md-4">
+                    <input ng-model="booksIndexCtrl.newBook.image" type="text" class="form-control input-md">
+                  </div>
+                </div>
+
+
+                <!-- Button -->
+                <!-- <div class="form-group"> -->
+                  <!-- <label class="col-md-4 control-label">Save</label> -->
+                  <div class="col-md-4 col-md-offset-4">
+                    <button class="btn btn-primary">Submit</button>
+                  </div>
+                <!-- </div> -->
+              </fieldset>
+            </form>
+          </div>
+      </div>
+        <hr>
+
+
+        <!-- <p>{{booksIndexCtrl.newBook}}</p> -->
+
+
+
+
+<input type="text" class="form-control" ng-model="searchText" placeholder="Search Books">
+<div ng-repeat="book in booksIndexCtrl.books | orderBy: 'name' | filter: searchText" class="row">
+
+
+<!-- Book display information -->
+  <!-- <div class="row"> -->
 
     <div class="col-md-3 col-xs-12 thumbnail">
       <img class="img-responsive col-m-4" ng-src={{book.image}} alt="Book image">
     </div>
-
+    <br>
     <div class="col-md-9 col-xs-12">
         <ul class="list-group form-inline">
           <li class="list-group-item">
@@ -18,9 +83,9 @@
             <span>{{book.releaseDate}}</span>
           </li>
         </ul>
-</div>
+    </div>
 
-
+  </div>
 <!-- Here, make the HTML for how you want each book to display.
 Use ng-model to fill in data.
 Make sure you display an image, the title, and the author.
