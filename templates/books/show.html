@@ -31,7 +31,7 @@
 
           <!-- show while not editing -->
           <button class='btn btn-danger' ng-hide="editing" ng-click="booksShowCtrl.deleteBook(book)">Delete&nbsp;<span class="glyphicon glyphicon-trash"></span></button>
-          <button  class='btn btn-info' ng-hide="editing" ng-click="editing = true">Edit Album&nbsp;<span class="glyphicon glyphicon-pencil"></span></button>
+          <button  class='btn btn-info' ng-hide="editing" ng-click="editing = true">Edit Book&nbsp;<span class="glyphicon glyphicon-pencil"></span></button>
 
           <!-- show while editing -->
           <button class='btn btn-success' ng-show="editing" ng-click="booksShowCtrl.editingBook(booksShowCtrl.book); editing = false">Save&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
